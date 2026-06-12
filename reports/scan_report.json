@@ -1,5 +1,5 @@
 {
-    "scan_date": "2026-06-12T13:40:04.205461",
+    "scan_date": "2026-06-12T15:58:37.919064",
     "sast_scan": "completed",
     "dependency_scan": "completed",
     "docker_scan": "completed",
@@ -13,14 +13,14 @@
     "findings": [
         {
             "file": "bot.py",
-            "line": 20,
+            "line": 25,
             "pattern": "shell=True",
             "severity": "HIGH",
             "recommendation": "Replace shell=True with safer subprocess argument lists and strict command allowlisting."
         },
         {
             "file": "bot.py",
-            "line": 26,
+            "line": 31,
             "pattern": "shell=True",
             "severity": "HIGH",
             "recommendation": "Replace shell=True with safer subprocess argument lists and strict command allowlisting."
