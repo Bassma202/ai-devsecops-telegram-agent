@@ -1,16 +1,30 @@
 {
-    "scan_date": "2026-06-11T17:53:43.093638",
+    "scan_date": "2026-06-12T13:40:04.205461",
     "sast_scan": "completed",
     "dependency_scan": "completed",
     "docker_scan": "completed",
     "secrets_scan": "completed",
-    "total_findings": 1,
+    "total_findings": 2,
+    "severity_summary": {
+        "HIGH": 2,
+        "MEDIUM": 0,
+        "LOW": 0
+    },
     "findings": [
         {
             "file": "bot.py",
-            "line": 16,
+            "line": 20,
             "pattern": "shell=True",
-            "severity": "high"
+            "severity": "HIGH",
+            "recommendation": "Replace shell=True with safer subprocess argument lists and strict command allowlisting."
+        },
+        {
+            "file": "bot.py",
+            "line": 26,
+            "pattern": "shell=True",
+            "severity": "HIGH",
+            "recommendation": "Replace shell=True with safer subprocess argument lists and strict command allowlisting."
         }
-    ]
+    ],
+    "notification": "vulnerabilities detected"
 }

@@ -1,12 +1,23 @@
 DevSecOps Security Scan Report
-==============================
+================================
 
-Scan date: 2026-06-11T17:53:43.093638
+Scan date: 2026-06-12T13:40:04.205461
 SAST scan: completed
 Dependency scan: completed
 Docker scan: completed
 Secrets scan: completed
-Total findings: 1
+
+Severity summary:
+- HIGH: 2
+- MEDIUM: 0
+- LOW: 0
+
+Total findings: 2
 
 Findings:
-- HIGH | bot.py:16 | Pattern: shell=True
+- HIGH | bot.py:20 | Pattern: shell=True
+  Recommendation: Replace shell=True with safer subprocess argument lists and strict command allowlisting.
+- HIGH | bot.py:26 | Pattern: shell=True
+  Recommendation: Replace shell=True with safer subprocess argument lists and strict command allowlisting.
+
+Notification: vulnerabilities detected
