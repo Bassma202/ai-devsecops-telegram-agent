@@ -1,0 +1,39 @@
+stages:
+  - build
+  - test
+  - security
+  - deploy
+
+build_app:
+  stage: build
+  script:
+    - echo "Building Docker image..."
+    - docker compose build
+
+test_app:
+  stage: test
+  script:
+    - echo "Testing project structure..."
+    - test -f bot.py
+    - test -f app/app.py
+    - test -f app/Dockerfile
+    - test -f docker-compose.yml
+    - test -f security/security_scan.py
+
+security_scan:
+  stage: security
+  script:
+    - echo "Running DevSecOps security scan..."
+    - python security/security_scan.py
+  artifacts:
+    paths:
+      - reports/scan_report.txt
+      - reports/scan_report.json
+
+deploy_app:
+  stage: deploy
+  script:
+    - echo "Deploying application with Docker Compose..."
+    - docker compose up -d --build
+  only:
+    - main

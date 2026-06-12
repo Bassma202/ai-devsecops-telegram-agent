@@ -1,0 +1,16 @@
+{
+    "scan_date": "2026-06-11T17:53:43.093638",
+    "sast_scan": "completed",
+    "dependency_scan": "completed",
+    "docker_scan": "completed",
+    "secrets_scan": "completed",
+    "total_findings": 1,
+    "findings": [
+        {
+            "file": "bot.py",
+            "line": 16,
+            "pattern": "shell=True",
+            "severity": "high"
+        }
+    ]
+}

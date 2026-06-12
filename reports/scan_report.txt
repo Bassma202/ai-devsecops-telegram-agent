@@ -1,0 +1,12 @@
+DevSecOps Security Scan Report
+==============================
+
+Scan date: 2026-06-11T17:53:43.093638
+SAST scan: completed
+Dependency scan: completed
+Docker scan: completed
+Secrets scan: completed
+Total findings: 1
+
+Findings:
+- HIGH | bot.py:16 | Pattern: shell=True
