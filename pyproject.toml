@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "forge-devsecops"
+version = "2.0.0"
+description = "FORGE — Secure Software Supply Chain, Policy-as-Code & Hardened DevSecOps ChatOps Platform"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Bassma Alaoui Sossey" }]
+dependencies = [
+    "fastapi>=0.115.6,<0.117.0",
+    "uvicorn[standard]>=0.32.1,<0.35.0",
+    "pydantic>=2.10.3,<3.0.0",
+    "cryptography>=44.0.0,<45.0.0",
+    "httpx>=0.28.1,<0.29.0",
+    "python-dotenv>=1.0.1,<2.0.0",
+    "python-telegram-bot>=21.9,<22.0",
+    "flask>=3.1.0,<3.2.0",
+    "bandit>=1.8.0,<2.0.0",
+    "cyclonedx-python-lib>=8.4.0,<10.0.0",
+    "pyyaml>=6.0.2,<7.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.4,<9.0.0",
+    "pytest-asyncio>=0.24.0,<0.26.0",
+    "pytest-cov>=6.0.0,<7.0.0",
+    "ruff>=0.8.4,<0.10.0",
+    "pip-audit>=2.7.3,<3.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/forge"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"

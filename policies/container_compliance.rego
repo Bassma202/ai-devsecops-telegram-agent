@@ -1,43 +1,88 @@
-# ==============================================================================
-# Open Policy Agent (OPA) / Rego Security Policy for Containers
-# Author: Bassma Alaoui Sossey
-# Enforces production quality gates before deployment in CI/CD pipelines
-# ==============================================================================
+# FORGE — Open Policy Agent (OPA) Rego v1 Container & Supply-Chain Policy
+# Enforces container hardening, vulnerability ceilings, SBOM presence, and cryptographic attestation.
 
-package container.security
+package forge.security
 
-default allow = false
+import rego.v1
 
-# Allow deployment only if there are zero policy violations
-allow {
-    count(violations) == 0
+default allow := false
+
+allow if {
+	count(violations) == 0
 }
 
-# Rule 1: Disallow running containers as root (UID 0)
-violations[msg] {
-    input.config.User == "root"
-    msg := "POLICY_FAIL: Container runs as root user. Must specify non-root USER in Dockerfile."
+# 1. Disallow root or empty user
+violations contains msg if {
+	user := lower(trim_space(object.get(input.container, "user", "")))
+	user in {"", "root", "0", "0:0"}
+	msg := "POLICY_FAIL [CTR-001]: Container runs as root or unspecified UID. Set non-root USER (e.g., 1001:1001)."
 }
 
-violations[msg] {
-    input.config.User == "0"
-    msg := "POLICY_FAIL: Container runs with UID 0. Must specify non-root USER."
+# 2. Disallow privileged containers
+violations contains msg if {
+	object.get(input.container, "privileged", false) == true
+	msg := "POLICY_FAIL [CTR-002]: Privileged container mode is prohibited."
 }
 
-# Rule 2: Disallow privileged mode execution
-violations[msg] {
-    input.host_config.Privileged == true
-    msg := "POLICY_FAIL: Container configured in Privileged mode. Violates least-privilege boundary."
+# 3. Require read-only root filesystem (unless explicitly exempted)
+violations contains msg if {
+	not object.get(input.container, "read_only_rootfs", false)
+	not "CTR-003" in object.get(input, "approved_exceptions", [])
+	msg := "POLICY_FAIL [CTR-003]: Root filesystem must be read-only (read_only_rootfs: true)."
 }
 
-# Rule 3: Enforce presence of Trivy security scan report
-violations[msg] {
-    not input.trivy_scan_completed
-    msg := "POLICY_FAIL: Missing mandatory Trivy container image security scan."
+# 4. Require dropping ALL Linux capabilities
+violations contains msg if {
+	caps := [lower(c) | some c in object.get(input.container, "cap_drop", [])]
+	not "all" in caps
+	msg := "POLICY_FAIL [CTR-004]: Container must drop ALL Linux capabilities (cap_drop: ['ALL'])."
 }
 
-# Rule 4: Zero CRITICAL CVE tolerance
-violations[msg] {
-    input.vulnerabilities.critical > 0
-    msg := sprintf("POLICY_FAIL: Found %d CRITICAL CVEs in image. Zero tolerance threshold exceeded.", [input.vulnerabilities.critical])
+# 5. Prohibit unsafe host mounts (Docker socket, /etc, /proc, root /)
+unsafe_mounts := {"/var/run/docker.sock", "/etc", "/proc", "/sys", "/"}
+
+violations contains msg if {
+	some m in object.get(input.container, "host_mounts", [])
+	m in unsafe_mounts
+	msg := sprintf("POLICY_FAIL [CTR-005]: Prohibited host mount detected: %s", [m])
+}
+
+# 6. Disallow floating latest image tags
+violations contains msg if {
+	image := object.get(input.container, "image", "")
+	endswith(image, ":latest")
+	msg := sprintf("POLICY_FAIL [CTR-006]: Floating ':latest' image tag is prohibited (%s). Pin version or digest.", [image])
+}
+
+# 7. Require zero Critical vulnerabilities
+violations contains msg if {
+	crit := object.get(object.get(input, "vulnerabilities", {}), "critical", 0)
+	crit > 0
+	msg := sprintf("POLICY_FAIL [VULN-001]: %d CRITICAL vulnerabilities exceed ceiling (0).", [crit])
+}
+
+# 8. Require zero High unexempted vulnerabilities (unless documented exception)
+violations contains msg if {
+	high := object.get(object.get(input, "vulnerabilities", {}), "high", 0)
+	high > 0
+	not "VULN-002" in object.get(input, "approved_exceptions", [])
+	msg := sprintf("POLICY_FAIL [VULN-002]: %d HIGH vulnerabilities require remediation or approved exception.", [high])
+}
+
+# 9. Require zero leaked secrets
+violations contains msg if {
+	secrets := object.get(object.get(input, "vulnerabilities", {}), "secrets", 0)
+	secrets > 0
+	msg := sprintf("POLICY_FAIL [SEC-001]: %d secret exposure(s) detected. Deployment blocked.", [secrets])
+}
+
+# 10. Require valid SBOM & verified artifact attestation for release
+violations contains msg if {
+	not object.get(object.get(input, "supply_chain", {}), "sbom_valid", false)
+	msg := "POLICY_FAIL [SC-001]: Valid CycloneDX SBOM artifact is required before release."
+}
+
+violations contains msg if {
+	not object.get(object.get(input, "supply_chain", {}), "signature_verified", false)
+	msg := "POLICY_FAIL [SC-002]: Cryptographic artifact provenance signature must verify before release."
 }

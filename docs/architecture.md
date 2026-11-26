@@ -1,73 +1,15 @@
-# Architecture - AI DevSecOps Telegram Agent
+# Architecture & Design Decisions — FORGE
 
-## Project Goal
+## Component Overview
+- **`src/forge/scanners.py`**: Executes real security tools (`bandit`, `pip-audit`, `trivy` when installed, plus deterministic secret & Dockerfile auditors) via argv-only `subprocess.run(..., shell=False)`. Distinguishes `COMPLETED`, `FAILED`, and `UNAVAILABLE` explicitly.
+- **`src/forge/policy.py` & `policies/container_compliance.rego`**: Open Policy Agent (OPA) Rego v1 policy gate covering root UID, privileged mode, read-only rootfs, Linux capability dropping, unsafe host mounts, `:latest` tags, vulnerability ceilings, secret blocks, SBOM validity, and signature verification. Verified with `opa test policies/ -v` (`8/8` passing on `openpolicyagent/opa:1.1.0-static`).
+- **`src/forge/sbom.py`**: Generates genuine CycloneDX v1.5 JSON SBOMs from live installed distributions via `cyclonedx-python-lib` bound to artifact SHA-256 digests.
+- **`src/forge/signing.py`**: Ed25519 DSSE/in-toto-style provenance signing and verification rejecting 1-byte tampering and untrusted keys.
+- **`src/forge/deployer.py`**: Gate-enforced local release activation with health checks and controlled rollback.
+- **`src/forge/telegram_bot.py`**: Default-deny authorized Telegram ChatOps interface with command allowlisting, sliding-window rate limits, non-blocking async execution, and two-step approval tokens.
+- **`src/forge/web.py`**: FastAPI operational dashboard reading live persisted SQLite state.
 
-This project is an academic DevSecOps prototype controlled entirely through Telegram.
-
-The goal is to centralize DevSecOps actions such as:
-
-- checking system status
-- launching a CI/CD pipeline
-- running security scans
-- deploying the application
-- consulting logs
-- checking application health
-
-## Global Architecture
-
-Telegram User → Telegram Bot → AI Agent / Orchestrator → CI/CD Pipeline → Docker Compose → Security Tools → Reports → Monitoring
-
-## Components
-
-### 1. Telegram User
-
-The user interacts with the system only through Telegram commands.
-
-### 2. Telegram Bot
-
-The Telegram bot is the interface of the system. It receives commands such as:
-
-- `/start`
-- `/help`
-- `/status`
-- `/run_pipeline`
-- `/scan`
-- `/deploy`
-- `/logs`
-
-### 3. AI Agent / Orchestrator
-
-The Python script `bot.py` acts as the automation agent.
-
-It receives Telegram commands and triggers predefined DevSecOps actions.
-
-Examples:
-
-- `/run_pipeline` simulates a CI/CD pipeline
-- `/scan` launches the security scanner
-- `/deploy` deploys the application using Docker Compose
-- `/logs` retrieves application logs
-- `/status` checks Docker status and application health
-
-### 4. CI/CD Pipeline
-
-The file `.gitlab-ci.yml` represents the CI/CD pipeline structure.
-
-It includes stages such as:
-
-- build
-- security scan
-- deployment preparation
-
-In this academic prototype, the pipeline is demonstrated locally through the Telegram bot.
-
-### 5. Docker Deployment
-
-The application is containerized using Docker.
-
-The file `docker-compose.yml` builds and runs the application container.
-
-The application is exposed locally on:
-
-```text
-http://localhost:5050
+## Key Architectural Decisions (ADRs)
+1. **ADR-001 — Eliminate `shell=True` and substring scanning**: Original academic prototype used `shell=True` and naive string matching. Replaced with argv-only subprocess execution of real Bandit SAST and explicit scanner status tracking.
+2. **ADR-002 — Rego v1 + pinned static OPA container**: Upgraded `policies/container_compliance.rego` from Rego v0 to Rego v1 (`import rego.v1`) and validated against `openpolicyagent/opa:1.1.0-static` (`arm64` + `amd64`).
+3. **ADR-003 — Honest AI scope**: Removed unsupported AI claims; FORGE is positioned accurately as a DevSecOps, supply-chain security, and ChatOps engineering platform.

@@ -1,119 +1,47 @@
-# Agent AI DevSecOps piloté via Telegram
+# FORGE — Secure Software Supply Chain & DevSecOps Engineering
 
-## 1. Description
+**Repository:** `https://github.com/Bassma202/ai-devsecops-telegram-agent`  
+**Author:** Bassma Alaoui Sossey — Final-Year Cybersecurity Engineering Student (Université Euromed de Fès — EIDIA)
 
-This project is a DevSecOps automation agent controlled through Telegram.
+## 1. Purpose
+FORGE is a local DevSecOps, software supply-chain security, and hardened ChatOps engineering platform. It replaces naive regex checks and manual deployments with real SAST execution, OPA Rego v1 policy-as-code gates, genuine CycloneDX v1.5 SBOM generation, Ed25519 provenance signing/verification, controlled release rollbacks, and default-deny Telegram ChatOps.
 
-The user interacts with a Telegram bot to launch pipeline actions, run security scans, deploy an application, check deployment status, and consult logs.
+## 2. Implemented Capabilities
+- **Real Security Scanners (`src/forge/scanners.py`)**: Executes Bandit SAST via argv-only `subprocess.run(..., shell=False)`, redacted secret scanning, Dockerfile hardening checks, and optional `pip-audit` / `trivy` integration. Scanner errors or unavailability are reported explicitly (`FAILED` / `UNAVAILABLE`) and never treated as passing scans.
+- **OPA Rego v1 Policy-as-Code (`policies/container_compliance.rego`)**: Enforces non-root UID, non-privileged mode, read-only rootfs, `cap_drop: [ALL]`, unsafe host-mount blocks, pinned image tags, zero critical/secret findings, SBOM validity, and verified cryptographic provenance, with documented exception support. Verified via `8/8` Rego unit tests on `openpolicyagent/opa:1.1.0-static`.
+- **CycloneDX v1.5 SBOM (`src/forge/sbom.py`)**: Generates live SBOMs from installed distributions using `cyclonedx-python-lib` (67 validated components in current environment) bound to artifact SHA-256 digests.
+- **Ed25519 Provenance Attestation (`src/forge/signing.py`)**: Produces DSSE/in-toto-style signed envelopes bound to artifact digest and Git commit SHA; strictly rejects altered artifacts (`DIGEST_MISMATCH`) and untrusted keys (`SIGNATURE_INVALID`).
+- **Controlled Local Deployment & Rollback (`src/forge/deployer.py`)**: Blocks noncompliant builds, records health checks on approved releases, and supports controlled rollback to the last verified release.
+- **Hardened Telegram ChatOps (`src/forge/telegram_bot.py`)**: Default-deny operator allowlist (`FORGE_ALLOWED_TELEGRAM_USER_IDS`), strict command allowlist, sliding-window rate limiting, non-blocking async scan execution, two-step approval nonces for `/deploy` and `/rollback`, and automatic secret redaction.
+- **Live Operations Dashboard (`src/forge/web.py`)**: FastAPI REST API + HTML interface reading directly from SQLite (`data/forge.db`).
+- **Reusable GitHub Actions Workflow (`.github/workflows/reusable-security-gate.yml`)**: Pinned-SHA least-privilege workflow reusable across sibling portfolio repositories.
 
-The goal is to centralize DevSecOps operations in one conversational interface.
+## 3. Architecture
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md).
 
-## 2. Architecture
+## 4. Quick Start & Reproduction
+```bash
+make doctor
+make setup
+make test
+make security
+make opa-test
+make demo
+make up   # Opens FastAPI operations UI on http://127.0.0.1:8006
+```
 
-Telegram User → Telegram Bot → AI Agent / Orchestrator → CI/CD Pipeline → Docker Compose → Security Tools
+## 5. Verified Execution Evidence
+Evidence generated on 2026-11-26 (`evidence/forge_demo_evidence.json`, classification: **Genuine laboratory execution**):
+- **Remediation Lifecycle**: Bandit `1.9.4` detected `B404` & `B602` (`shell=True`) in `examples/vulnerable_fixture` (`FINDINGS_BLOCKING`) and returned `0` findings (`PASS`) on `examples/remediated_fixture` and hardened `app/`.
+- **OPA Rego v1 Gate**: Evaluated with `openpolicyagent/opa:1.1.0-static` (`8/8` Rego unit tests passed; noncompliant manifest blocked with `9` violations; compliant manifest `allowed: true`).
+- **SBOM**: Generated `CycloneDX 1.5` SBOM (`67` components, `schema_valid: true`).
+- **Provenance**: Authentic artifact `VERIFIED`; 1-byte modified artifact rejected (`DIGEST_MISMATCH`); untrusted key rejected (`SIGNATURE_INVALID`).
+- **Deployment & Rollback**: `v2.0.0-unsafe` -> `BLOCKED`; `v2.0.0` -> `DEPLOYED`; `v2.0.1` -> `DEPLOYED`; rollback -> `ROLLED_BACK` (`active_release: v2.0.0`).
 
-Main components:
+## 6. Known Limitations
+- Local Ed25519 keys validate artifact integrity within the lab trust root; production pipelines should adopt keyless Sigstore OIDC or KMS-backed signing.
+- `pip-audit` and `trivy` require network access for live vulnerability databases; offline runs explicitly classify them `UNAVAILABLE`.
+- Despite the historical repository slug (`ai-devsecops-telegram-agent`), FORGE does not fabricate LLM decision-making in security gates; all gating is deterministic.
 
-- Telegram Bot: receives user commands.
-- AI Agent / Orchestrator: maps commands to DevSecOps actions.
-- Docker Compose: deploys the demo application.
-- Security Scanner: runs SAST, dependency, Docker, and secrets checks.
-- Reports: stores scan results.
-- CI/CD file: defines build, test, security, and deploy stages.
-
-## 3. Telegram Commands
-
-| Command | Description |
-|---|---|
-| /start | Starts the bot |
-| /help | Shows available commands |
-| /status | Shows current pipeline, scan, deployment, and agent status |
-| /run_pipeline | Launches the local CI/CD-style pipeline |
-| /scan | Runs security scans and returns results |
-| /deploy | Deploys the application using Docker Compose |
-| /logs | Shows recent application logs |
-
-## 4. DevSecOps Security Features
-
-The project includes the following security checks:
-
-- SAST scan: searches for risky code patterns.
-- Dependency scan: validates dependency scan stage.
-- Docker scan: validates Docker-related configuration.
-- Secrets analysis: searches for exposed secrets or suspicious patterns.
-- Monitoring: /status and /logs provide deployment visibility.
-
-The scan results are saved in:
-
-- reports/scan_report.txt
-- reports/scan_report.json
-
-## 5. Docker Deployment
-
-The demo application is a Flask app located in:
-
-- app/app.py
-
-It is containerized using:
-
-- app/Dockerfile
-
-Deployment is managed using:
-
-- docker-compose.yml
-
-The application runs on:
-
-- http://localhost:5050
-
-## 6. Installation
-
-Clone the repository, then run:
-
-chmod +x install.sh
-./install.sh
-
-Create a .env file containing:
-
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-
-Start the bot:
-
-source venv/bin/activate
-python bot.py
-
-## 7. Demo Workflow
-
-Recommended demonstration:
-
-1. Start the Telegram bot.
-2. Send /start.
-3. Send /help.
-4. Send /status.
-5. Send /run_pipeline.
-6. Send /scan.
-7. Send /deploy.
-8. Send /logs.
-9. Open http://localhost:5050 or test with curl.
-
-## 8. Limitations
-
-This is an academic prototype.
-
-Current limitations:
-
-- The pipeline is local and GitLab CI/CD is represented through .gitlab-ci.yml.
-- The security scanner is a lightweight local scanner.
-- shell=True is detected as a risky pattern. In this prototype, commands are predefined by the agent, but in production this should be replaced with safer subprocess argument lists and strict allowlisting.
-- Authentication should be strengthened so only authorized Telegram users can trigger DevSecOps actions.
-
-## 9. Future Improvements
-
-Possible improvements:
-
-- Connect directly to GitLab API to trigger real remote pipelines.
-- Integrate Semgrep for SAST.
-- Integrate Trivy for Docker image scanning.
-- Integrate Gitleaks for secrets detection.
-- Add user authorization by Telegram user ID.
-- Add alerting for failed deployments and critical vulnerabilities.
+## 7. License
+MIT License.

@@ -1,7 +1,16 @@
 services:
   demo-app:
     build: ./app
-    container_name: devsecops-demo-app
+    image: forge-demo-app:2.0.0
+    container_name: forge-demo-app
+    user: "1001:1001"
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp:noexec,nosuid,size=16m
     ports:
-      - "5050:5000"
+      - "127.0.0.1:5050:5000"
     restart: unless-stopped

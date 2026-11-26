@@ -1,0 +1,777 @@
+{
+  "components": [
+    {
+      "bom-ref": "BomRef.17301704198730827.3723285478073878",
+      "name": "CacheControl",
+      "purl": "pkg:pypi/cachecontrol@0.15.0",
+      "type": "library",
+      "version": "0.15.0"
+    },
+    {
+      "bom-ref": "BomRef.6680208028595783.8278591148490281",
+      "name": "Flask",
+      "purl": "pkg:pypi/flask@3.1.3",
+      "type": "library",
+      "version": "3.1.3"
+    },
+    {
+      "bom-ref": "BomRef.3404102267350537.007853820036870407",
+      "name": "Jinja2",
+      "purl": "pkg:pypi/jinja2@3.1.6",
+      "type": "library",
+      "version": "3.1.6"
+    },
+    {
+      "bom-ref": "BomRef.79901486221192.2896030138785456",
+      "name": "MarkupSafe",
+      "purl": "pkg:pypi/markupsafe@3.0.4",
+      "type": "library",
+      "version": "3.0.4"
+    },
+    {
+      "bom-ref": "BomRef.03814300097873102.06680901347244605",
+      "name": "PyYAML",
+      "purl": "pkg:pypi/pyyaml@6.0.4",
+      "type": "library",
+      "version": "6.0.4"
+    },
+    {
+      "bom-ref": "BomRef.8601536561856393.09712976178822841",
+      "name": "Pygments",
+      "purl": "pkg:pypi/pygments@2.21.0",
+      "type": "library",
+      "version": "2.21.0"
+    },
+    {
+      "bom-ref": "BomRef.7042326261213084.6503789149670749",
+      "name": "Werkzeug",
+      "purl": "pkg:pypi/werkzeug@3.1.9",
+      "type": "library",
+      "version": "3.1.9"
+    },
+    {
+      "bom-ref": "BomRef.5595960624888275.06878792300985692",
+      "name": "annotated-types",
+      "purl": "pkg:pypi/annotated-types@0.8.0",
+      "type": "library",
+      "version": "0.8.0"
+    },
+    {
+      "bom-ref": "BomRef.9896658102773682.7144360000610982",
+      "name": "anyio",
+      "purl": "pkg:pypi/anyio@4.16.0",
+      "type": "library",
+      "version": "4.16.0"
+    },
+    {
+      "bom-ref": "BomRef.7964950072548286.08958493328098105",
+      "name": "bandit",
+      "purl": "pkg:pypi/bandit@1.9.4",
+      "type": "library",
+      "version": "1.9.4"
+    },
+    {
+      "bom-ref": "BomRef.6363006924474521.9938196818595473",
+      "name": "blinker",
+      "purl": "pkg:pypi/blinker@1.9.0",
+      "type": "library",
+      "version": "1.9.0"
+    },
+    {
+      "bom-ref": "BomRef.7588735588808835.7101437307689455",
+      "name": "boolean.py",
+      "purl": "pkg:pypi/boolean.py@5.0",
+      "type": "library",
+      "version": "5.0"
+    },
+    {
+      "bom-ref": "BomRef.8629443543761394.6361147277172368",
+      "name": "certifi",
+      "purl": "pkg:pypi/certifi@2026.11.20",
+      "type": "library",
+      "version": "2026.11.20"
+    },
+    {
+      "bom-ref": "BomRef.21555754377174396.27250830053709796",
+      "name": "cffi",
+      "purl": "pkg:pypi/cffi@2.1.1",
+      "type": "library",
+      "version": "2.1.1"
+    },
+    {
+      "bom-ref": "BomRef.04033819985658749.7810753597867819",
+      "name": "charset-normalizer",
+      "purl": "pkg:pypi/charset-normalizer@3.5.3",
+      "type": "library",
+      "version": "3.5.3"
+    },
+    {
+      "bom-ref": "BomRef.925336162028109.8222908756153486",
+      "name": "click",
+      "purl": "pkg:pypi/click@8.5.1",
+      "type": "library",
+      "version": "8.5.1"
+    },
+    {
+      "bom-ref": "BomRef.4516504248977754.7936513503125964",
+      "name": "coverage",
+      "purl": "pkg:pypi/coverage@7.17.5",
+      "type": "library",
+      "version": "7.17.5"
+    },
+    {
+      "bom-ref": "BomRef.33295506779564277.7886711894937346",
+      "name": "cryptography",
+      "purl": "pkg:pypi/cryptography@44.0.3",
+      "type": "library",
+      "version": "44.0.3"
+    },
+    {
+      "bom-ref": "BomRef.5755761906369532.2951288504452263",
+      "name": "cyclonedx-python-lib",
+      "purl": "pkg:pypi/cyclonedx-python-lib@9.1.0",
+      "type": "library",
+      "version": "9.1.0"
+    },
+    {
+      "bom-ref": "BomRef.5053844095539114.2856279682889261",
+      "name": "defusedxml",
+      "purl": "pkg:pypi/defusedxml@0.7.1",
+      "type": "library",
+      "version": "0.7.1"
+    },
+    {
+      "bom-ref": "BomRef.049402981980144256.6517642151106049",
+      "name": "fastapi",
+      "purl": "pkg:pypi/fastapi@0.116.2",
+      "type": "library",
+      "version": "0.116.2"
+    },
+    {
+      "bom-ref": "BomRef.8406804195973209.34663537279776446",
+      "name": "filelock",
+      "purl": "pkg:pypi/filelock@4.3.1",
+      "type": "library",
+      "version": "4.3.1"
+    },
+    {
+      "bom-ref": "BomRef.7542850628183619.29371668079741853",
+      "name": "forge-devsecops",
+      "purl": "pkg:pypi/forge-devsecops@2.0.0",
+      "type": "library",
+      "version": "2.0.0"
+    },
+    {
+      "bom-ref": "BomRef.6147052291703304.3363215629894666",
+      "name": "h11",
+      "purl": "pkg:pypi/h11@0.16.0",
+      "type": "library",
+      "version": "0.16.0"
+    },
+    {
+      "bom-ref": "BomRef.7930651958859054.7504265233658565",
+      "name": "httpcore",
+      "purl": "pkg:pypi/httpcore@1.0.9",
+      "type": "library",
+      "version": "1.0.9"
+    },
+    {
+      "bom-ref": "BomRef.0851437379413833.8102968687393128",
+      "name": "httptools",
+      "purl": "pkg:pypi/httptools@0.9.0",
+      "type": "library",
+      "version": "0.9.0"
+    },
+    {
+      "bom-ref": "BomRef.7082326009951712.9603560619104101",
+      "name": "httpx",
+      "purl": "pkg:pypi/httpx@0.28.1",
+      "type": "library",
+      "version": "0.28.1"
+    },
+    {
+      "bom-ref": "BomRef.0682504883942705.47836011604314965",
+      "name": "idna",
+      "purl": "pkg:pypi/idna@3.20",
+      "type": "library",
+      "version": "3.20"
+    },
+    {
+      "bom-ref": "BomRef.17173114756118624.3273345182460877",
+      "name": "iniconfig",
+      "purl": "pkg:pypi/iniconfig@2.3.1",
+      "type": "library",
+      "version": "2.3.1"
+    },
+    {
+      "bom-ref": "BomRef.48880846277220924.11944434620511335",
+      "name": "itsdangerous",
+      "purl": "pkg:pypi/itsdangerous@2.2.0",
+      "type": "library",
+      "version": "2.2.0"
+    },
+    {
+      "bom-ref": "BomRef.7419790577875132.05150773819551657",
+      "name": "license-expression",
+      "purl": "pkg:pypi/license-expression@30.4.4",
+      "type": "library",
+      "version": "30.4.4"
+    },
+    {
+      "bom-ref": "BomRef.24301581724630494.9954910409296275",
+      "name": "markdown-it-py",
+      "purl": "pkg:pypi/markdown-it-py@4.3.0",
+      "type": "library",
+      "version": "4.3.0"
+    },
+    {
+      "bom-ref": "BomRef.4399946991205359.5315806535655053",
+      "name": "mdurl",
+      "purl": "pkg:pypi/mdurl@0.1.2",
+      "type": "library",
+      "version": "0.1.2"
+    },
+    {
+      "bom-ref": "BomRef.8968328250795873.3497193668341413",
+      "name": "msgpack",
+      "purl": "pkg:pypi/msgpack@1.2.4",
+      "type": "library",
+      "version": "1.2.4"
+    },
+    {
+      "bom-ref": "BomRef.06331214626258908.17269340493761443",
+      "name": "packageurl-python",
+      "purl": "pkg:pypi/packageurl-python@0.17.6",
+      "type": "library",
+      "version": "0.17.6"
+    },
+    {
+      "bom-ref": "BomRef.6888212558644011.17052365085911403",
+      "name": "packaging",
+      "purl": "pkg:pypi/packaging@26.4",
+      "type": "library",
+      "version": "26.4"
+    },
+    {
+      "bom-ref": "BomRef.8666392365574099.0649556092240805",
+      "name": "pip",
+      "purl": "pkg:pypi/pip@26.3",
+      "type": "library",
+      "version": "26.3"
+    },
+    {
+      "bom-ref": "BomRef.6457635503367035.6540928131073012",
+      "name": "pip-requirements-parser",
+      "purl": "pkg:pypi/pip-requirements-parser@32.0.1",
+      "type": "library",
+      "version": "32.0.1"
+    },
+    {
+      "bom-ref": "BomRef.7510276837738125.5986722011965084",
+      "name": "pip_api",
+      "purl": "pkg:pypi/pip-api@0.0.35",
+      "type": "library",
+      "version": "0.0.35"
+    },
+    {
+      "bom-ref": "BomRef.17608391321991146.1766207552196003",
+      "name": "pip_audit",
+      "purl": "pkg:pypi/pip-audit@2.10.1",
+      "type": "library",
+      "version": "2.10.1"
+    },
+    {
+      "bom-ref": "BomRef.6422478914686705.45359590393580795",
+      "name": "platformdirs",
+      "purl": "pkg:pypi/platformdirs@4.14.8",
+      "type": "library",
+      "version": "4.14.8"
+    },
+    {
+      "bom-ref": "BomRef.8466367630021607.5423051760711054",
+      "name": "pluggy",
+      "purl": "pkg:pypi/pluggy@1.7.0",
+      "type": "library",
+      "version": "1.7.0"
+    },
+    {
+      "bom-ref": "BomRef.3974827532035825.8832280411090604",
+      "name": "py-serializable",
+      "purl": "pkg:pypi/py-serializable@2.2.0",
+      "type": "library",
+      "version": "2.2.0"
+    },
+    {
+      "bom-ref": "BomRef.7373539277172513.543158662965211",
+      "name": "pycparser",
+      "purl": "pkg:pypi/pycparser@3.12",
+      "type": "library",
+      "version": "3.12"
+    },
+    {
+      "bom-ref": "BomRef.9832560358796464.33959814942182753",
+      "name": "pydantic",
+      "purl": "pkg:pypi/pydantic@2.14.4",
+      "type": "library",
+      "version": "2.14.4"
+    },
+    {
+      "bom-ref": "BomRef.662681400429643.4340552171900386",
+      "name": "pydantic_core",
+      "purl": "pkg:pypi/pydantic-core@2.50.5",
+      "type": "library",
+      "version": "2.50.5"
+    },
+    {
+      "bom-ref": "BomRef.20906104440260875.20455686466174183",
+      "name": "pyparsing",
+      "purl": "pkg:pypi/pyparsing@3.3.3",
+      "type": "library",
+      "version": "3.3.3"
+    },
+    {
+      "bom-ref": "BomRef.7605570410398442.4542590250294781",
+      "name": "pytest",
+      "purl": "pkg:pypi/pytest@8.4.2",
+      "type": "library",
+      "version": "8.4.2"
+    },
+    {
+      "bom-ref": "BomRef.29936535311199.3797433665615355",
+      "name": "pytest-asyncio",
+      "purl": "pkg:pypi/pytest-asyncio@0.25.3",
+      "type": "library",
+      "version": "0.25.3"
+    },
+    {
+      "bom-ref": "BomRef.6076079568842568.7702416474144838",
+      "name": "pytest-cov",
+      "purl": "pkg:pypi/pytest-cov@6.3.0",
+      "type": "library",
+      "version": "6.3.0"
+    },
+    {
+      "bom-ref": "BomRef.639815591508814.6691130686505035",
+      "name": "python-dotenv",
+      "purl": "pkg:pypi/python-dotenv@1.2.4",
+      "type": "library",
+      "version": "1.2.4"
+    },
+    {
+      "bom-ref": "BomRef.8606417662676934.14170417549294956",
+      "name": "python-telegram-bot",
+      "purl": "pkg:pypi/python-telegram-bot@21.11.1",
+      "type": "library",
+      "version": "21.11.1"
+    },
+    {
+      "bom-ref": "BomRef.8992462733614551.9442152671887325",
+      "name": "requests",
+      "purl": "pkg:pypi/requests@2.34.2",
+      "type": "library",
+      "version": "2.34.2"
+    },
+    {
+      "bom-ref": "BomRef.902606922422912.44436138838289585",
+      "name": "rich",
+      "purl": "pkg:pypi/rich@15.0.0",
+      "type": "library",
+      "version": "15.0.0"
+    },
+    {
+      "bom-ref": "BomRef.511460254610423.17546686997696637",
+      "name": "ruff",
+      "purl": "pkg:pypi/ruff@0.9.10",
+      "type": "library",
+      "version": "0.9.10"
+    },
+    {
+      "bom-ref": "BomRef.3474994787991782.6161310610899602",
+      "name": "sortedcontainers",
+      "purl": "pkg:pypi/sortedcontainers@2.4.0",
+      "type": "library",
+      "version": "2.4.0"
+    },
+    {
+      "bom-ref": "BomRef.5104794276440656.5947495698349805",
+      "name": "starlette",
+      "purl": "pkg:pypi/starlette@0.48.0",
+      "type": "library",
+      "version": "0.48.0"
+    },
+    {
+      "bom-ref": "BomRef.07860888850721903.8809127528294152",
+      "name": "stevedore",
+      "purl": "pkg:pypi/stevedore@5.10.0",
+      "type": "library",
+      "version": "5.10.0"
+    },
+    {
+      "bom-ref": "BomRef.6206097949987633.15616057714607956",
+      "name": "tomli",
+      "purl": "pkg:pypi/tomli@2.5.0",
+      "type": "library",
+      "version": "2.5.0"
+    },
+    {
+      "bom-ref": "BomRef.6456468895161583.2547031884164551",
+      "name": "tomli_w",
+      "purl": "pkg:pypi/tomli-w@1.2.0",
+      "type": "library",
+      "version": "1.2.0"
+    },
+    {
+      "bom-ref": "BomRef.21996111477637625.8226610488174625",
+      "name": "typing-inspection",
+      "purl": "pkg:pypi/typing-inspection@0.4.5",
+      "type": "library",
+      "version": "0.4.5"
+    },
+    {
+      "bom-ref": "BomRef.8902806521672233.20716613541591522",
+      "name": "typing_extensions",
+      "purl": "pkg:pypi/typing-extensions@4.16.0",
+      "type": "library",
+      "version": "4.16.0"
+    },
+    {
+      "bom-ref": "BomRef.7824805426006459.24811700714828777",
+      "name": "urllib3",
+      "purl": "pkg:pypi/urllib3@2.8.0",
+      "type": "library",
+      "version": "2.8.0"
+    },
+    {
+      "bom-ref": "BomRef.09657399095191499.4036637050193185",
+      "name": "uvicorn",
+      "purl": "pkg:pypi/uvicorn@0.34.3",
+      "type": "library",
+      "version": "0.34.3"
+    },
+    {
+      "bom-ref": "BomRef.19087202662513236.7585903843694279",
+      "name": "uvloop",
+      "purl": "pkg:pypi/uvloop@0.23.0",
+      "type": "library",
+      "version": "0.23.0"
+    },
+    {
+      "bom-ref": "BomRef.39014085765126205.41795962963918",
+      "name": "watchfiles",
+      "purl": "pkg:pypi/watchfiles@1.3.0",
+      "type": "library",
+      "version": "1.3.0"
+    },
+    {
+      "bom-ref": "BomRef.304981139803407.10214162273117322",
+      "name": "websockets",
+      "purl": "pkg:pypi/websockets@17.4",
+      "type": "library",
+      "version": "17.4"
+    }
+  ],
+  "dependencies": [
+    {
+      "dependsOn": [
+        "BomRef.9896658102773682.7144360000610982",
+        "BomRef.5595960624888275.06878792300985692",
+        "BomRef.7964950072548286.08958493328098105",
+        "BomRef.6363006924474521.9938196818595473",
+        "BomRef.7588735588808835.7101437307689455",
+        "BomRef.17301704198730827.3723285478073878",
+        "BomRef.8629443543761394.6361147277172368",
+        "BomRef.21555754377174396.27250830053709796",
+        "BomRef.04033819985658749.7810753597867819",
+        "BomRef.925336162028109.8222908756153486",
+        "BomRef.4516504248977754.7936513503125964",
+        "BomRef.33295506779564277.7886711894937346",
+        "BomRef.5755761906369532.2951288504452263",
+        "BomRef.5053844095539114.2856279682889261",
+        "BomRef.049402981980144256.6517642151106049",
+        "BomRef.8406804195973209.34663537279776446",
+        "BomRef.6680208028595783.8278591148490281",
+        "BomRef.7542850628183619.29371668079741853",
+        "BomRef.6147052291703304.3363215629894666",
+        "BomRef.7930651958859054.7504265233658565",
+        "BomRef.0851437379413833.8102968687393128",
+        "BomRef.7082326009951712.9603560619104101",
+        "BomRef.0682504883942705.47836011604314965",
+        "BomRef.17173114756118624.3273345182460877",
+        "BomRef.48880846277220924.11944434620511335",
+        "BomRef.3404102267350537.007853820036870407",
+        "BomRef.7419790577875132.05150773819551657",
+        "BomRef.24301581724630494.9954910409296275",
+        "BomRef.79901486221192.2896030138785456",
+        "BomRef.4399946991205359.5315806535655053",
+        "BomRef.8968328250795873.3497193668341413",
+        "BomRef.06331214626258908.17269340493761443",
+        "BomRef.6888212558644011.17052365085911403",
+        "BomRef.8666392365574099.0649556092240805",
+        "BomRef.6457635503367035.6540928131073012",
+        "BomRef.7510276837738125.5986722011965084",
+        "BomRef.17608391321991146.1766207552196003",
+        "BomRef.6422478914686705.45359590393580795",
+        "BomRef.8466367630021607.5423051760711054",
+        "BomRef.3974827532035825.8832280411090604",
+        "BomRef.7373539277172513.543158662965211",
+        "BomRef.9832560358796464.33959814942182753",
+        "BomRef.662681400429643.4340552171900386",
+        "BomRef.8601536561856393.09712976178822841",
+        "BomRef.20906104440260875.20455686466174183",
+        "BomRef.7605570410398442.4542590250294781",
+        "BomRef.29936535311199.3797433665615355",
+        "BomRef.6076079568842568.7702416474144838",
+        "BomRef.639815591508814.6691130686505035",
+        "BomRef.8606417662676934.14170417549294956",
+        "BomRef.03814300097873102.06680901347244605",
+        "BomRef.8992462733614551.9442152671887325",
+        "BomRef.902606922422912.44436138838289585",
+        "BomRef.511460254610423.17546686997696637",
+        "BomRef.3474994787991782.6161310610899602",
+        "BomRef.5104794276440656.5947495698349805",
+        "BomRef.07860888850721903.8809127528294152",
+        "BomRef.6206097949987633.15616057714607956",
+        "BomRef.6456468895161583.2547031884164551",
+        "BomRef.21996111477637625.8226610488174625",
+        "BomRef.8902806521672233.20716613541591522",
+        "BomRef.7824805426006459.24811700714828777",
+        "BomRef.09657399095191499.4036637050193185",
+        "BomRef.19087202662513236.7585903843694279",
+        "BomRef.39014085765126205.41795962963918",
+        "BomRef.304981139803407.10214162273117322",
+        "BomRef.7042326261213084.6503789149670749"
+      ],
+      "ref": "BomRef.15496763133157965.27744929741680224"
+    },
+    {
+      "ref": "BomRef.5595960624888275.06878792300985692"
+    },
+    {
+      "ref": "BomRef.9896658102773682.7144360000610982"
+    },
+    {
+      "ref": "BomRef.7964950072548286.08958493328098105"
+    },
+    {
+      "ref": "BomRef.6363006924474521.9938196818595473"
+    },
+    {
+      "ref": "BomRef.7588735588808835.7101437307689455"
+    },
+    {
+      "ref": "BomRef.17301704198730827.3723285478073878"
+    },
+    {
+      "ref": "BomRef.8629443543761394.6361147277172368"
+    },
+    {
+      "ref": "BomRef.21555754377174396.27250830053709796"
+    },
+    {
+      "ref": "BomRef.04033819985658749.7810753597867819"
+    },
+    {
+      "ref": "BomRef.925336162028109.8222908756153486"
+    },
+    {
+      "ref": "BomRef.4516504248977754.7936513503125964"
+    },
+    {
+      "ref": "BomRef.33295506779564277.7886711894937346"
+    },
+    {
+      "ref": "BomRef.5755761906369532.2951288504452263"
+    },
+    {
+      "ref": "BomRef.5053844095539114.2856279682889261"
+    },
+    {
+      "ref": "BomRef.049402981980144256.6517642151106049"
+    },
+    {
+      "ref": "BomRef.8406804195973209.34663537279776446"
+    },
+    {
+      "ref": "BomRef.6680208028595783.8278591148490281"
+    },
+    {
+      "ref": "BomRef.7542850628183619.29371668079741853"
+    },
+    {
+      "ref": "BomRef.6147052291703304.3363215629894666"
+    },
+    {
+      "ref": "BomRef.7930651958859054.7504265233658565"
+    },
+    {
+      "ref": "BomRef.0851437379413833.8102968687393128"
+    },
+    {
+      "ref": "BomRef.7082326009951712.9603560619104101"
+    },
+    {
+      "ref": "BomRef.0682504883942705.47836011604314965"
+    },
+    {
+      "ref": "BomRef.17173114756118624.3273345182460877"
+    },
+    {
+      "ref": "BomRef.48880846277220924.11944434620511335"
+    },
+    {
+      "ref": "BomRef.3404102267350537.007853820036870407"
+    },
+    {
+      "ref": "BomRef.7419790577875132.05150773819551657"
+    },
+    {
+      "ref": "BomRef.24301581724630494.9954910409296275"
+    },
+    {
+      "ref": "BomRef.79901486221192.2896030138785456"
+    },
+    {
+      "ref": "BomRef.4399946991205359.5315806535655053"
+    },
+    {
+      "ref": "BomRef.8968328250795873.3497193668341413"
+    },
+    {
+      "ref": "BomRef.06331214626258908.17269340493761443"
+    },
+    {
+      "ref": "BomRef.6888212558644011.17052365085911403"
+    },
+    {
+      "ref": "BomRef.8666392365574099.0649556092240805"
+    },
+    {
+      "ref": "BomRef.6457635503367035.6540928131073012"
+    },
+    {
+      "ref": "BomRef.7510276837738125.5986722011965084"
+    },
+    {
+      "ref": "BomRef.17608391321991146.1766207552196003"
+    },
+    {
+      "ref": "BomRef.6422478914686705.45359590393580795"
+    },
+    {
+      "ref": "BomRef.8466367630021607.5423051760711054"
+    },
+    {
+      "ref": "BomRef.3974827532035825.8832280411090604"
+    },
+    {
+      "ref": "BomRef.7373539277172513.543158662965211"
+    },
+    {
+      "ref": "BomRef.9832560358796464.33959814942182753"
+    },
+    {
+      "ref": "BomRef.662681400429643.4340552171900386"
+    },
+    {
+      "ref": "BomRef.8601536561856393.09712976178822841"
+    },
+    {
+      "ref": "BomRef.20906104440260875.20455686466174183"
+    },
+    {
+      "ref": "BomRef.7605570410398442.4542590250294781"
+    },
+    {
+      "ref": "BomRef.29936535311199.3797433665615355"
+    },
+    {
+      "ref": "BomRef.6076079568842568.7702416474144838"
+    },
+    {
+      "ref": "BomRef.639815591508814.6691130686505035"
+    },
+    {
+      "ref": "BomRef.8606417662676934.14170417549294956"
+    },
+    {
+      "ref": "BomRef.03814300097873102.06680901347244605"
+    },
+    {
+      "ref": "BomRef.8992462733614551.9442152671887325"
+    },
+    {
+      "ref": "BomRef.902606922422912.44436138838289585"
+    },
+    {
+      "ref": "BomRef.511460254610423.17546686997696637"
+    },
+    {
+      "ref": "BomRef.3474994787991782.6161310610899602"
+    },
+    {
+      "ref": "BomRef.5104794276440656.5947495698349805"
+    },
+    {
+      "ref": "BomRef.07860888850721903.8809127528294152"
+    },
+    {
+      "ref": "BomRef.6206097949987633.15616057714607956"
+    },
+    {
+      "ref": "BomRef.6456468895161583.2547031884164551"
+    },
+    {
+      "ref": "BomRef.21996111477637625.8226610488174625"
+    },
+    {
+      "ref": "BomRef.8902806521672233.20716613541591522"
+    },
+    {
+      "ref": "BomRef.7824805426006459.24811700714828777"
+    },
+    {
+      "ref": "BomRef.09657399095191499.4036637050193185"
+    },
+    {
+      "ref": "BomRef.19087202662513236.7585903843694279"
+    },
+    {
+      "ref": "BomRef.39014085765126205.41795962963918"
+    },
+    {
+      "ref": "BomRef.304981139803407.10214162273117322"
+    },
+    {
+      "ref": "BomRef.7042326261213084.6503789149670749"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "bom-ref": "BomRef.15496763133157965.27744929741680224",
+      "name": "forge-devsecops",
+      "purl": "pkg:pypi/forge-devsecops@2.0.0",
+      "type": "application",
+      "version": "2.0.0"
+    },
+    "timestamp": "2026-11-26T01:35:29.603982+00:00",
+    "properties": [
+      {
+        "name": "forge:artifact_path",
+        "value": "app.py"
+      },
+      {
+        "name": "forge:artifact_sha256",
+        "value": "a89936ccc01b5e628842b4992b230d4635edb4ce39a1f0864390344254affba4"
+      },
+      {
+        "name": "forge:generated_at",
+        "value": "2026-11-26T01:35:29.636619+00:00"
+      }
+    ]
+  },
+  "serialNumber": "urn:uuid:61e3df95-2f9f-41a2-bf02-ebe100d817f8",
+  "version": 1,
+  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5"
+}
