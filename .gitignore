@@ -8,3 +8,4 @@ data/*.db
 data/active_release.json
 *.pem
 .DS_Store
+.coverage
