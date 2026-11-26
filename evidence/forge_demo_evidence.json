@@ -1,14 +1,17 @@
 {
-  "generated_at": "2026-11-26T01:35:30.041473+00:00",
-  "evidence_classification": "Genuine laboratory execution",
+  "generated_at": "2026-11-26T03:40:10.256282+00:00",
+  "evidence_classification": "Genuine laboratory execution (live local HTTP release runtimes + real scanners + OPA)",
   "remediation_lifecycle": {
-    "vulnerable_run_id": "RUN-FA668FD0E1",
+    "vulnerable_run_id": "RUN-F8A5B37C69",
     "vulnerable_status": "FINDINGS_BLOCKING",
     "vulnerable_rules_detected": [
       "B404",
       "B602"
     ],
-    "clean_app_run_id": "RUN-A78D96A654",
+    "remediated_run_id": "RUN-5F318DB387",
+    "remediated_status": "PASS",
+    "remediated_finding_count": 0,
+    "clean_app_run_id": "RUN-670F93B855",
     "clean_app_status": "PASS",
     "clean_app_finding_count": 0
   },
@@ -29,29 +32,47 @@
     "compliant_allowed": true
   },
   "sbom": {
-    "sbom_id": "SBOM-0222548BC7",
+    "sbom_id": "SBOM-C1DB58CF10",
     "spec_version": "1.5",
     "tool_name": "cyclonedx-python-lib",
     "tool_version": "9.1.0",
-    "generated_at": "2026-11-26T01:35:29.637133+00:00",
+    "generated_at": "2026-11-26T03:40:06.848741+00:00",
     "artifact_name": "forge-devsecops",
-    "artifact_sha256": "a89936ccc01b5e628842b4992b230d4635edb4ce39a1f0864390344254affba4",
+    "artifact_sha256": "a84e0a44c9376a08826fc5a408191247c3f09e943af8397c348db439047256c0",
     "component_count": 67,
     "file_path": "/Users/bassma/.gemini/antigravity/scratch/pfe-workspace/ai-devsecops-telegram-agent/evidence/sbom/forge_cyclonedx_v15.json",
     "schema_valid": true
   },
   "provenance": {
-    "attestation_id": "ATT-5802A036EF",
-    "authentic_verified": true,
-    "authentic_detail": "VERIFIED: Ed25519 signature and SHA-256 digest (a89936ccc01b) match commit 70c47de.",
+    "v2_0_0_sha256": "a84e0a44c9376a08826fc5a408191247c3f09e943af8397c348db439047256c0",
+    "v2_1_0_sha256": "0e09c3137bf885f4abef32be5dc1e9769f709560e909082f8c9b53491a5a356a",
+    "distinct_artifact_digests": true,
+    "v2_0_0_verified": true,
+    "v2_1_0_verified": true,
     "tampered_verified": false,
-    "tampered_detail": "DIGEST_MISMATCH: Artifact modified after signing (expected a89936ccc01b, got 1904177d34a8)."
+    "tampered_detail": "DIGEST_MISMATCH: Artifact modified after signing (expected a84e0a44c937, got b86cfa3e492d)."
   },
-  "deployments": {
-    "blocked": "BLOCKED",
-    "v2_0_0": "DEPLOYED",
-    "v2_0_1": "DEPLOYED",
-    "rollback": "ROLLED_BACK",
-    "active_after_rollback": "v2.0.0"
+  "runtime_deployments": {
+    "blocked_status": "BLOCKED",
+    "v2_0_0_status": "DEPLOYED",
+    "v2_0_0_live_http_version": {
+      "version": "v2.0.0",
+      "artifact_sha256": "a84e0a44c9376a08826fc5a408191247c3f09e943af8397c348db439047256c0"
+    },
+    "v2_1_0_status": "DEPLOYED",
+    "v2_1_0_live_http_version": {
+      "version": "v2.1.0",
+      "artifact_sha256": "0e09c3137bf885f4abef32be5dc1e9769f709560e909082f8c9b53491a5a356a"
+    },
+    "broken_release_status": "FAILED",
+    "live_http_retained_after_failed_deploy": {
+      "version": "v2.1.0",
+      "artifact_sha256": "0e09c3137bf885f4abef32be5dc1e9769f709560e909082f8c9b53491a5a356a"
+    },
+    "rollback_status": "ROLLED_BACK",
+    "live_http_restored_after_rollback": {
+      "version": "v2.0.0",
+      "artifact_sha256": "a84e0a44c9376a08826fc5a408191247c3f09e943af8397c348db439047256c0"
+    }
   }
 }

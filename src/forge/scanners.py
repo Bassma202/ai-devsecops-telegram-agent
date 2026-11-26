@@ -554,7 +554,7 @@ def execute_security_pipeline(
     for fn in scanners_to_run:
         exec_rec, found = fn(tpath, run_id, edir)
         executions.append(exec_rec)
-        if exec_rec.status == ScannerStatus.FAILED:
+        if exec_rec.status in (ScannerStatus.FAILED, ScannerStatus.UNAVAILABLE):
             any_failed = True
         for f in found:
             dedup[f.finding_id] = f
